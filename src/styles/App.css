@@ -1,0 +1,83 @@
+@import url("https://fonts.googleapis.com/css?family=Josefin+Sans:400,600,700&display=swap");
+.header {
+  position: fixed;
+  width: 100%;
+  height: 128px;
+  z-index: 4;
+}
+@media (max-width: 425px) {
+  .header {
+    height: 96px;
+  }
+}
+.header .logo a {
+  font-size: 1.2rem;
+  letter-spacing: 0.5rem;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+}
+body,
+html {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: #ffffff;
+  -ms-scroll-chaining: none;
+      overscroll-behavior: none;
+  margin: 0;
+  font-family: "Josefin Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  width: 1560px;
+  min-width: 1560px;
+  margin: 0 auto;
+  height: 100%;
+}
+@media (max-width: 1560px) {
+  .container {
+    width: 1280px;
+    min-width: 1280px;
+  }
+}
+@media (max-width: 1366px) {
+  .container {
+    width: 1080px;
+    min-width: 1080px;
+  }
+}
+@media (max-width: 1080px) {
+  .container {
+    width: 100%;
+    min-width: 100%;
+  }
+}
+.container .row {
+  display: flex;
+  height: 100%;
+  padding: 0 32px;
+}
+@media (max-width: 425px) {
+  .container .row {
+    padding: 0 16px;
+  }
+}
+.container .v-center {
+  align-items: center;
+}
+.container .space-between {
+  justify-content: space-between;
+}
+
+.container-fluid {
+  width: 100%;
+  height: 100%;
+}
+.container-fluid .row {
+  display: flex;
+  height: 100%;
+}/*# sourceMappingURL=App.css.map */

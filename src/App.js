@@ -1,10 +1,47 @@
 import React, { useEffect } from "react";
 import gsap from "gsap";
-import Banner from "./components/banner";
-import Cases from "./components/cases";
-import Header from "./components/header";
-import IntroOverlay from "./components/introOverlay";
+import {Route} from "react-router-dom"
 import "./styles/App.scss";
+
+//components
+import Header from "./components/header";
+import Navigation from "./components/navigation";
+
+//pages
+import Home from "./pages/home";
+import ProductDetail from "./pages/productDetail";
+import Approch from "./pages/approch";
+import About from "./pages/about";
+import Services from "./pages/services";
+
+
+const routes = [
+  {
+    path: "/",
+    name: "Home",
+    Component: Home,
+  },
+  {
+    path: "/product-detail",
+    name: "Product Detail",
+    Component: ProductDetail,
+  },
+  {
+    path: "/approch",
+    name: "Approch",
+    Component: Approch,
+  },
+  {
+    path: "/about",
+    name: "About Us",
+    Component: About,
+  },
+  {
+    path: "/services",
+    name: "Services",
+    Component: Services,
+  },
+];
 
 function App() {
   useEffect(() => {
@@ -18,61 +55,20 @@ function App() {
         visibility: "visible",
       },
     });
-
-    //timeline
-    const tl = gsap.timeline();
-
-    tl.from(".line span", {
-      duration: 1.8,
-      opacity: 0,
-      y: 100,
-      ease: "Power4.out",
-      skewY: 7,
-      delay: 1,
-      stagger: {
-        amount: 0.3,
-      },
-    })
-      .to(".overlay-top", {
-        duration: 1.6,
-        height: 0,
-        ease: "expo.inOut",
-        stagger: {
-          amount: 0.4,
-        },
-      })
-      .to(".overlay-bottom", {
-        duration: 1.6,
-        width: 0,
-        ease: "expo.inOut",
-        delay: -0.8,
-        stagger: {
-          amount: 0.4,
-        },
-      })
-      .to(".intro-overlay", {
-        duration: 0,
-        css: {
-          display: "none",
-        },
-      })
-      .from(".case-image img", {
-        duration: 1.6,
-        scale: 1.4,
-        ease: "expo.inOut",
-        delay: -2,
-        stagger: {
-          amount: 0.4,
-        },
-      });
   }, []);
+
   return (
-    <div className="App">
-      <IntroOverlay />
+    <>
       <Header />
-      <Banner />
-      <Cases />
-    </div>
+      <div className="App">
+        {routes.map( ({path, Component }) => (
+          <Route key={path} exact path={path}>
+            <Component />
+          </Route>
+        ) )}
+      </div>
+      <Navigation />
+    </>
   );
 }
 

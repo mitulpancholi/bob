@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import gsap from "gsap";
-import {Route} from "react-router-dom"
+import { Route } from "react-router-dom";
 import "./styles/App.scss";
 
 //components
@@ -13,7 +13,6 @@ import ProductDetail from "./pages/productDetail";
 import Approch from "./pages/approch";
 import About from "./pages/about";
 import Services from "./pages/services";
-
 
 const routes = [
   {
@@ -43,29 +42,61 @@ const routes = [
   },
 ];
 
+function debounce(fn, ms) {
+  let timer;
+  return () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      timer = null;
+      fn.apply(this, arguments);
+    }, ms);
+  };
+}
+
 function App() {
+  // prevent flashing of h2 span on refresh
+  gsap.to("body", {
+    duration: 0,
+    css: {
+      visibility: "visible",
+    },
+  });
+
+  const [dimension, setDimension] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth,
+  });
+
   useEffect(() => {
-    let vh = window.innerHeight * 0.01;
+    let vh = dimension.height * 0.01;
     document.documentElement.style.setProperty("--vh", `${vh}px`);
 
-    // prevent flashing of h2 span on refresh
-    gsap.to("body", {
-      duration: 0,
-      css: {
-        visibility: "visible",
-      },
-    });
-  }, []);
+ 
+
+    const debouncedHandleResize = debounce(function handleResize() {
+      setDimension({
+        height: window.innerHeight,
+        width: window.innerWidth,
+      });
+    }, 750)
+
+    window.addEventListener("resize", debouncedHandleResize);
+
+    return () => {
+      window.removeEventListener("resize", debouncedHandleResize);
+    };
+  });
 
   return (
     <>
       <Header />
+      {console.log(dimension)}
       <div className="App">
-        {routes.map( ({path, Component }) => (
+        {routes.map(({ path, Component }) => (
           <Route key={path} exact path={path}>
             <Component />
           </Route>
-        ) )}
+        ))}
       </div>
       <Navigation />
     </>

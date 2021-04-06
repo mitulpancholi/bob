@@ -89,7 +89,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header dimension={dimension} />
       {console.log(dimension)}
       <div className="App">
         {routes.map(({ path, Component }) => (

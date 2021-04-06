@@ -10,19 +10,19 @@ const caseStudies = [
     id: 1,
     subtitle: "Transparent Tape",
     title: "One of the highest Selling Tapes",
-    img: "curology-min.png",
+    img: "curology-min.jpg",
   },
   {
     id: 2,
     subtitle: "Printed Tape",
     title: "We Provide Custom Printed Tape for You",
-    img: "lumin-min.png",
+    img: "lumin-min.jpg",
   },
   {
     id: 3,
     subtitle: "Duct Tape",
     title: "This is sample text for this photo",
-    img: "yourspace-min.png",
+    img: "yourspace-min.jpg",
   },
 ];
 

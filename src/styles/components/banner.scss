@@ -23,6 +23,11 @@
         font-size: 1.7rem;
         line-height: 2.2rem;
       }
+      // @include media("<=380px") {
+      //   margin-top: 72px;
+      //   font-size: 1.2rem;
+      //   line-height: 2.2rem;
+      // }
       .line {
         margin-bottom: 8px;
         height: 56px;

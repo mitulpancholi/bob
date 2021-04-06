@@ -8,7 +8,7 @@ const Banner = () => {
         <div className="row">
           <h2>
             <div className="line">
-              <span>Quality is Our Number One</span>
+              <span>Quality is Our First</span>
             </div>
             <div className="line">
               <span>Priority</span>

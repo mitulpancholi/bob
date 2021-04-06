@@ -45,8 +45,10 @@ const Cases = () => {
                 <span>{caseItem.subtitle}</span>
                 <h2>{caseItem.title}</h2>
               </div>
-              <div className="case-image"></div>
+              <div className="case-image">
+
               <img src={`/assets/${caseItem.img}`} alt={caseItem.title} />
+              </div>
             </div>
           ))}
         </div>
